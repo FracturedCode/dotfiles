@@ -11,7 +11,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.config/oh-my-zsh"
+export ZSH="${XDG_CONFIG_HOME:-$HOME/.config}/oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -46,6 +46,7 @@ export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST # Autocompletion is annoying in 
 export HISTFILE=$ZSH/cache/.zsh_history
 source $ZSH/oh-my-zsh.sh
 
+fpath+=($ZSH_CUSTOM/completions); export fpath
 
 ## User configuration
 
@@ -56,7 +57,7 @@ export EDITOR=nano
 
 ## Path
 if [ -d "$HOME/.local/bin" ] ; then
-    export PATH="$HOME/.local/bin:$PATH"
+    PATH+=($HOME/.local/bin); export PATH
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
