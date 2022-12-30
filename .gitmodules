@@ -1,0 +1,6 @@
+[submodule "oh-my-zsh/plugins/zsh-autocomplete"]
+	path = oh-my-zsh/plugins/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
+[submodule "oh-my-zsh/themes/powerlevel10k"]
+	path = oh-my-zsh/themes/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
