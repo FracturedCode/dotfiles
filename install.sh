@@ -1,23 +1,40 @@
 #!/bin/sh
 set -e # exit on any failure
 
-## Supported scenarios/features:
+# Supported scenarios/features:
 # Different config home
 #
-# atm this is a dumb script that assumes that there is no existing config
+# Supported distros:
+# alpine
+#
+# atm this is a dumb script that assumes that there is no existing config in the locations they are to be installed in
 # and that dependencies (for which the configuration files are for) are already installed in the assumed locations
 # and that you have internet access
-# and that you have su permissions
+# and that it is run with "sudo -E"
+# and that this is an attended, interactive terminal
+#
+# This script is not destructive. It will not replace your own dotfiles.
+# As a consequence there could be variation in behavior based on the program
+# if there are multiple locations the program checks for config and multiple locations are populated
+# say if you had your own configuration already there
+#
+# Dependencies:
+# git nano zsh oh-my-zsh
+# Dependencies/syntax almost certainly available already:
+# awk ln mkdir echo rmdir if
+#
+# Configurations are installed for:
+# git
+# nano
+# zsh
+# oh-my-zsh
 
-CONFIG=${XDG_CONFIG_HOME:-~/.config}
 
-echog() {
-        GREEN='\033[0;32m'
-        NOCOLOR='\033[0m'
-        echo -e "${GREEN}${@}${NOCOLOR}"
-}
+CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
 
-# TODO if replace
+source common.sh
+
+echog $CONFIG
 
 echog Placing configurations
 echo
@@ -45,12 +62,18 @@ ln -s zshrc ${ZDOTDIR:-$HOME}/.zshrc
 # oh-my-zsh
 ZSH=${ZSH:-$CONFIG/oh-my-zsh}
 ZSH_CUSTOM=${ZSH_CUSTOM:-$ZSH/custom}
-#if [[ ! -d "$ZSH_CUSTOM" ]]; then
+if [[ ! -d "$ZSH_CUSTOM" ]]; then
+	mkdir -p $ZSH_CUSTOM
+fi
+rmdir $ZSH_CUSTOM # intentionally fail on not-empty dir
 ln -s oh-my-zsh $ZSH_CUSTOM
-#fi
 
 # Set zsh as default shell
 if [ "$SHELL" != "*zsh" ]; then
 	echo Changing shell to zsh
-	chsh /bin/zsh
+	# Using awk because this can enable unattended scripts whereas chsh requires a password input and isn't installed on alpine by default.
+	# awk is on practically every non-windows machine in the world and we don't need that password prompt
+	# https://www.unix.com/shell-programming-and-scripting/194045-change-default-shell-specific-user-awk.html
+	# https://archive.fracturedcode.net/archive/1672468429.577091/index.html
+	cat /etc/passwd | awk -F":" -v USERNAME="$SUDO_USER" -v NEWSHELL="/bin/zsh" -F: '$1 == USERNAME { $7=NEWSHELL }; 1' OFS=":" > /etc/passwd
 fi
