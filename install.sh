@@ -1,18 +1,22 @@
 #!/bin/sh
-set -e # exit on any failure
-
+#
 # Supported scenarios/features:
 # Different config home
 #
 # Supported distros:
 # alpine
 #
+# Assumptions:
 # atm this is a dumb script that assumes that there is no existing config in the locations they are to be installed in
 # and that dependencies (for which the configuration files are for) are already installed in the assumed locations
 # and that you have internet access
 # and that it is run with "sudo -E"
 # and that this is an attended, interactive terminal
 #
+# Assertions:
+# That your $ZSH_CUSTOM is empty
+#
+# Destructivity:
 # This script is not destructive. It will not replace your own dotfiles.
 # As a consequence there could be variation in behavior based on the program
 # if there are multiple locations the program checks for config and multiple locations are populated
@@ -21,24 +25,28 @@ set -e # exit on any failure
 # Dependencies:
 # git nano zsh oh-my-zsh
 # Dependencies/syntax almost certainly available already:
-# awk ln mkdir echo rmdir if
+# awk ln mkdir echo rmdir if source var=
 #
 # Configurations are installed for:
 # git
 # nano
 # zsh
 # oh-my-zsh
+#
+# Customizable vars:
+# XDG_CONFIG_HOME # config home. Typically ~/.config
+# ZSH # zsh configuration dir. With OMZ. Typically ~/.oh-my-zsh, but this script assumes $CONFIG/oh-my-zsh
+# ZSH_CUSTOM # zsh custom config dir. Typically $ZSH/custom
+# ZDOTDIR # where z files live, ie .zshenv, .zshrc, etc. Typically $HOME
 
-
-CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
+set -e # fail on any error and output a message
+trap 'echo -e "${RED}Script failed with exit code $?. View stderr for more info.${NOCOLOR}"; exit' EXIT
 
 source common.sh
 
-echog $CONFIG
+CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
 
-echog Placing configurations
-echo
-echo
+echog "--- Installing dotfiles. Config home: $CONFIG ---"
 
 ## Git
 echog Git
@@ -77,3 +85,5 @@ if [ "$SHELL" != "*zsh" ]; then
 	# https://archive.fracturedcode.net/archive/1672468429.577091/index.html
 	cat /etc/passwd | awk -F":" -v USERNAME="$SUDO_USER" -v NEWSHELL="/bin/zsh" -F: '$1 == USERNAME { $7=NEWSHELL }; 1' OFS=":" > /etc/passwd
 fi
+
+

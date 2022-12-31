@@ -1,7 +1,9 @@
 #!/bin/sh
 
+export RED='\033[0;31m'
+export NOCOLOR='\033[0m'
+
 echog() {
         GREEN='\033[0;32m'
-        NOCOLOR='\033[0m'
         echo -e "${GREEN}${@}${NOCOLOR}"
 }
