@@ -40,7 +40,12 @@
 # ZDOTDIR # where z files live, ie .zshenv, .zshrc, etc. Typically $HOME
 
 set -e # fail on any error and output a message
-trap 'echo -e "${RED}Script failed with exit code $?. View stderr for more info.${NOCOLOR}"; exit' EXIT
+trap '
+LE_EXITCODE=$?
+if [ $LE_EXITCODE != 0 ]; then
+	echo -e "${RED}Script failed with exit code $LE_EXITCODE. View stderr for more info.${NOCOLOR}"
+fi
+exit' EXIT
 
 source common.sh
 
@@ -52,7 +57,7 @@ echog "--- Installing dotfiles. Config home: $CONFIG ---"
 echog Git
 mkdir -p $CONFIG/git
 # if [[ -f $CONFIG/git/config ]]
-ln -s gitconfig $CONFIG/git/config
+ln -sT $(realpath gitconfig) $CONFIG/git/config
 
 #if [[ -f ~/.gitconfig ]]
 
@@ -60,12 +65,14 @@ ln -s gitconfig $CONFIG/git/config
 ## Nano
 echog Nano
 mkdir -p $CONFIG/nano
-ln -s nanorc $CONFIG/nano/nanorc
+ln -sT $(realpath nano/nanorc) $CONFIG/nano/nanorc
+cp -r nano/syntax-highlighting $CONFIG/nano/
+echo "include $CONFIG/nano/syntax-highlighting/*.nanorc" >> nano/nanorc
 
 
 ## Zsh
 echog Zsh w/ oh-my-zsh
-ln -s zshrc ${ZDOTDIR:-$HOME}/.zshrc
+ln -sT $(realpath zshrc) ${ZDOTDIR:-$HOME}/.zshrc
 
 # oh-my-zsh
 ZSH=${ZSH:-$CONFIG/oh-my-zsh}
@@ -74,11 +81,11 @@ if [[ ! -d "$ZSH_CUSTOM" ]]; then
 	mkdir -p $ZSH_CUSTOM
 fi
 rmdir $ZSH_CUSTOM # intentionally fail on not-empty dir
-ln -s oh-my-zsh $ZSH_CUSTOM
+ln -s $(realpath oh-my-zsh) $ZSH_CUSTOM
 
 # Set zsh as default shell
 if [ "$SHELL" != "*zsh" ]; then
-	echo Changing shell to zsh
+	echo Changing default shell to zsh
 	# Using awk because this can enable unattended scripts whereas chsh requires a password input and isn't installed on alpine by default.
 	# awk is on practically every non-windows machine in the world and we don't need that password prompt
 	# https://www.unix.com/shell-programming-and-scripting/194045-change-default-shell-specific-user-awk.html

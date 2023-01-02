@@ -5,10 +5,6 @@ set locking
 set mouse
 set tabsize 4
 
-## Improved Nano Syntax Highlighting Files
-## https://github.com/scopatz/nanorc
-include /home/gabe/.local/share/nano/syntax-highlighting/*.nanorc
-
 ## Paint the interface elements of nano.  These are examples; there are
 ## no colors by default, except for errorcolor and spotlightcolor.
 set titlecolor bold,white,blue
@@ -26,3 +22,7 @@ set functioncolor green
 ## Keybinds
 unbind ^C	main
 bind ^Z	suspend	main
+
+## Improved Nano Syntax Highlighting Files
+# https://github.com/scopatz/nanorc
+#include <CONFIG_DIR>/nano/syntax-highlighting/*.nanorc

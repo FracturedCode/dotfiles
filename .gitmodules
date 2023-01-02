@@ -4,3 +4,6 @@
 [submodule "oh-my-zsh/themes/powerlevel10k"]
 	path = oh-my-zsh/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "nano/syntax-highlighting"]
+	path = nano/syntax-highlighting
+	url = https://github.com/scopatz/nanorc.git
