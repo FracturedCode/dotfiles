@@ -1,25 +1,15 @@
-[http]
-	sslBackend = schannel
-[credential "https://miazuredomke01.mi.local"]
-	provider = generic
 [alias]
 	pretty = log --pretty=format:'%C(yellow)%h %C(green)%ad %C(cyan)[%an] %Creset%s' --date=format:'%F %T' --decorate --graph
 	pop = stash pop
 	rename = branch -m
-	forcepull = !C:/Users/gabe.carpenter/forcepull.sh
+	forcepull = !~/forcepull.sh
 	show-files = show --name-status
 [user]
-	name = Gabe Carpenter
-	email = gabe.carpenter@milliman.com
+	name = Gabe C
+	email = gabe@fracturedcode.net
 [push]
 	autoSetupRemote = true
-[credential]
-	helper = wincred
 [status]
 	showUntrackedFiles = all
-[safe]
-	directory = //wsl$/Ubuntu/home/gabe/src/EHR
-	directory = //wsl$/Ubuntu/home/gabe/src/Ehi/docs
-	directory = //wsl$/Ubuntu/home/gabe/src/Ehi/main
-	directory = //wsl$/Ubuntu/home/gabe/src/Ehi/main
-	directory = //wsl$/Ubuntu/home/gabe/src/Ehi/docs
+[pager]
+	pretty = less -X -F
