@@ -7,8 +7,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [ -d "$HOME/.local/bin" ] ; then
+    path+=($HOME/.local/bin); export path
+fi
+
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
+## OMZ
 # Path to your oh-my-zsh installation.
 export ZSH=$XDG_CONFIG_HOME/oh-my-zsh
 
@@ -49,9 +54,5 @@ fpath+=($ZSH_CUSTOM/completions); export fpath
 
 ## User configuration
 
-# Path
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH+=($HOME/.local/bin); export PATH
-fi
 
 # To customize prompt, run `p10k configure` or edit $ZSH_CUSTOM/p10k.zsh.
