@@ -32,9 +32,10 @@
 # nano
 # zsh
 # oh-my-zsh
+# wget
 #
 # Customizable vars:
-# XDG_CONFIG_HOME # config home. Typically ~/.config
+# XDG_CONFIG_HOME # config home. Typically ~/.config # TODO add this to zshenv if different
 # ZSH # zsh configuration dir. With OMZ. Typically ~/.oh-my-zsh, but this script assumes $CONFIG/oh-my-zsh
 # ZSH_CUSTOM # zsh custom config dir. Typically $ZSH/custom
 # ZDOTDIR # where z files live, ie .zshenv, .zshrc, etc. Typically $HOME
@@ -94,3 +95,8 @@ if [ "$SHELL" != "*zsh" ]; then
 fi
 
 
+## Wget
+echog Wget
+mkdir -p $CONFIG/wget
+# https://stackoverflow.com/questions/47548271/disable-wget-history-tracking/54843736
+echo "alias wget='wget --hsts-file $XDG_CONFIG_HOME/wget/hsts'" >> $ZSH_CUSTOM/aliases.zsh
