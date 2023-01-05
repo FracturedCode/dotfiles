@@ -23,7 +23,7 @@
 # say if you had your own configuration already there
 #
 # Dependencies:
-# git nano zsh oh-my-zsh
+# git nano zsh oh-my-zsh wget
 # Dependencies/syntax almost certainly available already:
 # awk ln mkdir echo rmdir if source var=
 #
