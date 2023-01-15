@@ -82,7 +82,7 @@ if [[ ! -d "$ZSH_CUSTOM" ]]; then
 	mkdir -p $ZSH_CUSTOM
 fi
 rmdir $ZSH_CUSTOM # intentionally fail on not-empty dir
-ln -s $(realpath oh-my-zsh) $ZSH_CUSTOM
+ln -s $(realpath oh-my-zsh/custom) $ZSH_CUSTOM
 
 # Set zsh as default shell
 if [ "$SHELL" != "*zsh" ]; then
