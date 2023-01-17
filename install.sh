@@ -23,7 +23,7 @@
 # say if you had your own configuration already there
 #
 # Dependencies:
-# git nano zsh oh-my-zsh wget
+# git nano zsh wget
 # Dependencies/syntax almost certainly available already:
 # awk ln mkdir echo rmdir if source var=
 #
@@ -78,10 +78,13 @@ ln -sT $(realpath zshrc) ${ZDOTDIR:-$HOME}/.zshrc
 # oh-my-zsh
 ZSH=${ZSH:-$CONFIG/oh-my-zsh}
 ZSH_CUSTOM=${ZSH_CUSTOM:-$ZSH/custom}
-if [[ ! -d "$ZSH_CUSTOM" ]]; then
-	mkdir -p $ZSH_CUSTOM
-fi
-rmdir $ZSH_CUSTOM # intentionally fail on not-empty dir
+
+ln -s $(realpath oh-my-zsh/ohmyzsh) $ZSH
+
+# if [[ ! -d "$ZSH_CUSTOM" ]]; then
+# 	mkdir -p $ZSH_CUSTOM
+# fi
+# rmdir $ZSH_CUSTOM # intentionally fail on not-empty dir
 ln -s $(realpath oh-my-zsh/custom) $ZSH_CUSTOM
 
 # Set zsh as default shell
