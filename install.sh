@@ -46,7 +46,7 @@ export ZSH_CUSTOM=${ZSH_CUSTOM:-$ZSH/custom}
 
 echog "--- Installing dotfiles. Config home: $CONFIG ---"
 
-INSTALL_CONFIGS="git nano zsh wget"
+INSTALL_CONFIGS="git nano zsh wget" # TODO vscode
 for program in $INSTALL_CONFIGS; do
 	echo "Installing config for: $program"
 	. ./configurations/$program/install.sh

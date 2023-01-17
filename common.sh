@@ -30,3 +30,11 @@ link_and_backup() {
 	fi
 	ln -s $@
 }
+
+config_includes() {
+	if test "${INSTALL_CONFIGS#*$1}" != "$INSTALL_CONFIGS"; then
+		return 0
+	else
+		return 1
+	fi
+}
