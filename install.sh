@@ -5,26 +5,17 @@
 #
 # Supported distros:
 # alpine
+# debian
 #
 # Assumptions:
 # atm this is a dumb script that assumes that there is no existing config in the locations they are to be installed in
 # and that dependencies (for which the configuration files are for) are already installed in the assumed locations
 # and that you have internet access
 # and that it is run with "sudo -E"
-# and that this is an attended, interactive terminal
-#
-# Assertions:
 #
 # Destructivity:
-# This script is not destructive. It will not replace your own dotfiles.
-# As a consequence there could be variation in behavior based on the program
-# if there are multiple locations the program checks for config and multiple locations are populated
-# say if you had your own configuration already there
-#
-# Dependencies:
-# git nano zsh wget
-# Dependencies/syntax almost certainly available already:
-# awk ln mkdir echo rmdir if dot-sourcing var=
+# This script will replace your configs if you leave the program in INSTALL_CONFIGS,
+# but it will back them up.
 #
 # Configurations are installed for:
 # git

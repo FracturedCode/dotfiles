@@ -1,12 +1,12 @@
 #!/bin/sh
 echog Zsh w/ oh-my-zsh
-ln -sT $(realpath configurations/zsh/zshrc) ${ZDOTDIR:-$HOME}/.zshrc
+link_and_backup $(realpath configurations/zsh/zshrc) ${ZDOTDIR:-$HOME}/.zshrc
 
 # oh-my-zsh
-ln -s $(realpath configurations/zsh/ohmyzsh) $ZSH
+link_and_backup $(realpath configurations/zsh/ohmyzsh) $ZSH
+link_and_backup $(realpath configurations/zsh/custom) $ZSH_CUSTOM
 
-rm -rf $ZSH_CUSTOM
-ln -s $(realpath configurations/zsh/custom) $ZSH_CUSTOM
+# TODO include gitstatusd
 
 # Set zsh as default shell
 if [ "$SHELL" != "*zsh" ]; then
