@@ -14,7 +14,6 @@
 # and that this is an attended, interactive terminal
 #
 # Assertions:
-# That your $ZSH_CUSTOM is empty
 #
 # Destructivity:
 # This script is not destructive. It will not replace your own dotfiles.
@@ -25,7 +24,7 @@
 # Dependencies:
 # git nano zsh wget
 # Dependencies/syntax almost certainly available already:
-# awk ln mkdir echo rmdir if source var=
+# awk ln mkdir echo rmdir if dot-sourcing var=
 #
 # Configurations are installed for:
 # git
@@ -48,7 +47,7 @@ if [ $LE_EXITCODE != 0 ]; then
 fi
 exit' EXIT
 
-source common.sh
+. ./common.sh
 
 CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
 
@@ -81,10 +80,7 @@ ZSH_CUSTOM=${ZSH_CUSTOM:-$ZSH/custom}
 
 ln -s $(realpath oh-my-zsh/ohmyzsh) $ZSH
 
-# if [[ ! -d "$ZSH_CUSTOM" ]]; then
-# 	mkdir -p $ZSH_CUSTOM
-# fi
-# rmdir $ZSH_CUSTOM # intentionally fail on not-empty dir
+rm -rf $ZSH_CUSTOM
 ln -s $(realpath oh-my-zsh/custom) $ZSH_CUSTOM
 
 # Set zsh as default shell
