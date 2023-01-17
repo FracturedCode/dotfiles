@@ -4,3 +4,4 @@ mkdir -p $CONFIG/git
 link_and_backup $(realpath configurations/git/gitconfig) $CONFIG/git/config
 
 #if [[ -f ~/.gitconfig ]]
+# TODO prompt or get variable for a user's info

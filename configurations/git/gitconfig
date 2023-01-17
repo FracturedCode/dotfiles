@@ -4,12 +4,20 @@
 	rename = branch -m
 	forcepull = !~/forcepull.sh
 	show-files = show --name-status
+	ds = diff --staged
 [user]
 	name = Gabe C
 	email = gabe@fracturedcode.net
+	signingkey = 29A6BCF712707FC45273149326417CCB774E8872
 [push]
 	autoSetupRemote = true
 [status]
 	showUntrackedFiles = all
 [pager]
 	pretty = less -X -F
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[core]
+	editor = nano
