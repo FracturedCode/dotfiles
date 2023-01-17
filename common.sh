@@ -19,10 +19,14 @@ nextsuffix() {
 	echo "$bak"
 }
 
+backup_rm() {
+	bak="$(nextsuffix $1)"
+	mv "$1" "$bak"
+}
+
 link_and_backup() {
 	if [ -e "$2" ]; then
-		bak=$(nextsuffix "$2")
-		mv "$2" "$bak"
+		backup_rm "$2"
 	fi
 	ln -s $@
 }
