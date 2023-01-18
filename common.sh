@@ -20,15 +20,17 @@ nextsuffix() {
 }
 
 backup_rm() {
-	bak="$(nextsuffix $1)"
-	mv "$1" "$bak"
+	FILE="$1"
+	if [ -e "$FILE" ]; then
+		bak=$(nextsuffix "$FILE")
+		mv "$FILE" "$bak"
+	fi
 }
 
 link_and_backup() {
-	if [ -e "$2" ]; then
-		backup_rm "$2"
-	fi
-	ln -s $@
+	LINK="$2"
+	backup_rm "$LINK"
+	ln -s "$(realpath $1)" "$LINK"
 }
 
 config_includes() {

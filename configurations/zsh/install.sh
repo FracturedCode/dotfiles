@@ -1,8 +1,8 @@
 #!/bin/sh
-link_and_backup $(realpath configurations/zsh/ohmyzsh) $ZSH
-link_and_backup $(realpath configurations/zsh/custom) $ZSH_CUSTOM
+link_and_backup configurations/zsh/ohmyzsh $ZSH
+link_and_backup configurations/zsh/custom $ZSH_CUSTOM
 # TODO include gitstatusd
-link_and_backup $(realpath configurations/zsh/zshrc) ${ZDOTDIR:-$HOME}/.zshrc
+link_and_backup configurations/zsh/zshrc ${ZDOTDIR:-$HOME}/.zshrc
 
 # Set zsh as default shell
 if [ "$SHELL" != "*zsh" ]; then
