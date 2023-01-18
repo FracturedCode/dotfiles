@@ -9,7 +9,7 @@ echog --- Run all tests script ---
 platforms=(alpine debian)
 for platform in ${platforms[@]}; do
 	echog Building $platform image
-	NEW_IMAGE=$(./build.sh $platform -q )
+	NEW_IMAGE=$(./build.sh $platform -q)
 	echo "$NEW_IMAGE"
 
 	echog Running tests sequentially...
