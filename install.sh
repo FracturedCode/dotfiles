@@ -1,7 +1,5 @@
 #!/bin/sh
-#
-# Supported scenarios/features:
-# Different config home
+# It is preferred to run with "sudo -E ./install.sh", but "./install.sh" will work.
 #
 # Supported distros:
 # alpine
@@ -11,7 +9,6 @@
 # atm this is a dumb script that assumes that there is no existing config in the locations they are to be installed in
 # and that dependencies (for which the configuration files are for) are already installed in the assumed locations
 # and that you have internet access
-# and that it is run with "sudo -E"
 #
 # Destructivity:
 # This script will replace your configs if you leave the program in INSTALL_CONFIGS,

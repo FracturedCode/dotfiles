@@ -3,10 +3,13 @@ FROM alpine:latest as alpine
 RUN apk add git zsh nano curl sudo
 RUN adduser -h /home/test -s /bin/sh -D test
 RUN echo 'test ALL=(ALL:ALL) NOPASSWD: ALL' | EDITOR='tee -a' visudo
-USER test
 WORKDIR /home/test
+USER test
 COPY . ./.config/dotfiles
-RUN rm -rf ./.config/oh-my-zsh/custom
+USER root
+RUN chown -R test .config/dotfiles
+RUN chown test .config/
+USER test
 
 
 FROM debian:latest as debian
@@ -19,6 +22,5 @@ USER test
 COPY . ./.config/dotfiles
 USER root
 RUN chown -R test .config/dotfiles
+RUN chown test .config/
 USER test
-
-RUN rm -rf ./.config/oh-my-zsh/custom
