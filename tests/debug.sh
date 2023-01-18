@@ -4,6 +4,7 @@ set -e
 source common.sh
 
 #TODO zsh completions
-SCRIPT="${1:-scripts/install.sh}"
+SCRIPT="${2:-scripts/install.sh}"
+PLATFORM="${1:-alpine}"
 
-docker-run-test $SCRIPT $IMAGE_REPO:latest
+docker-run-test $SCRIPT $IMAGE_REPO/$PLATFORM:latest
