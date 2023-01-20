@@ -1,12 +1,12 @@
-[submodule "oh-my-zsh/plugins/zsh-autocomplete"]
-	path = oh-my-zsh/plugins/zsh-autocomplete
+[submodule "configurations/zsh/custom/plugins/zsh-autocomplete"]
+	path = configurations/zsh/custom/plugins/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
-[submodule "oh-my-zsh/themes/powerlevel10k"]
-	path = oh-my-zsh/themes/powerlevel10k
+[submodule "configurations/zsh/custom/themes/powerlevel10k"]
+	path = configurations/zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
-[submodule "nano/syntax-highlighting"]
-	path = nano/syntax-highlighting
+[submodule "configurations/nano/syntax-highlighting"]
+	path = configurations/nano/syntax-highlighting
 	url = https://github.com/scopatz/nanorc.git
-[submodule "oh-my-zsh/ohmyzsh"]
-	path = oh-my-zsh/ohmyzsh
+[submodule "configurations/zsh/ohmyzsh"]
+	path = configurations/zsh/ohmyzsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
