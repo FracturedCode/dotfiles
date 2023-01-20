@@ -3,7 +3,6 @@
 set -e
 source common.sh
 
-#TODO zsh completions
 SCRIPT="${2:-scripts/install.sh}"
 PLATFORM="${1:-alpine}"
 

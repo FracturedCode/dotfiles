@@ -21,7 +21,7 @@
 # wget
 #
 # Customizable vars:
-# XDG_CONFIG_HOME # config home. Typically ~/.config # TODO add this to zshenv if different
+# XDG_CONFIG_HOME # config home. Typically ~/.config
 # ZSH # zsh configuration dir. With OMZ. Typically ~/.oh-my-zsh, but this script assumes $CONFIG/oh-my-zsh
 # ZSH_CUSTOM # zsh custom config dir. Typically $ZSH/custom
 # ZDOTDIR # where z files live, ie .zshenv, .zshrc, etc. Typically $HOME
@@ -43,7 +43,7 @@ export ZSH_CUSTOM=${ZSH_CUSTOM:-$ZSH/custom}
 
 echog "--- Installing dotfiles. Config home: $CONFIG ---"
 
-INSTALL_CONFIGS="git nano zsh wget" # TODO vscode
+INSTALL_CONFIGS="git nano zsh wget"
 for program in $INSTALL_CONFIGS; do
 	echo "Installing config for: $program"
 	. ./configurations/$program/install.sh

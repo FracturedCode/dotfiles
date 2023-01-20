@@ -4,7 +4,6 @@ source ../common.sh
 
 export IMAGE_REPO='fc/dotfiles/test'
 
-#TODO zsh completions
 docker-run-test() {
 	echog "$1"
 	docker run --rm -it \
