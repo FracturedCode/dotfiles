@@ -5,6 +5,7 @@
 	forcepull = !~/forcepull.sh
 	show-files = show --name-status
 	ds = diff --staged
+	uncommit = reset HEAD^
 [user]
 	name = Gabe C
 	email = gabe@fracturedcode.net
