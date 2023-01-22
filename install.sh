@@ -27,6 +27,7 @@
 # ZSH_CUSTOM # zsh custom config dir. Typically $ZSH/custom
 # ZDOTDIR # where z files live, ie .zshenv, .zshrc, etc. Typically $HOME
 # GNUPGHOME
+# INSTALL_CONFIGS # a space delimited list of programs to install configs for
 
 set -e # fail on any error and output a message
 trap '
@@ -46,7 +47,7 @@ export GNUPGHOME=${GNUPGHOME:-$CONFIG/gnupg}
 
 echog "--- Installing dotfiles. Config home: $CONFIG ---"
 
-INSTALL_CONFIGS="git nano zsh wget gpg"
+INSTALL_CONFIGS=${INSTALL_CONFIGS:-"git nano zsh wget gpg"}
 for program in $INSTALL_CONFIGS; do
 	echo "Installing config for: $program"
 	. ./configurations/$program/install.sh
