@@ -6,9 +6,8 @@
 # debian
 #
 # Assumptions:
-# atm this is a dumb script that assumes that there is no existing config in the locations they are to be installed in
-# and that dependencies (for which the configuration files are for) are already installed in the assumed locations
-# and that you have internet access
+# that dependencies (for which the configuration files are for) are already installed in the assumed locations
+# and that you have internet access (initial config should work, but powerlevel10k will search for gitstatusd first run)
 #
 # Destructivity:
 # This script will replace your configs if you leave the program in INSTALL_CONFIGS,
@@ -52,3 +51,7 @@ for program in $INSTALL_CONFIGS; do
 	echo "Installing config for: $program"
 	. ./configurations/$program/install.sh
 done
+
+if [ ! -z ${SUDO_USER+x} ]; then
+	chown -R $SUDO_USER .
+fi
