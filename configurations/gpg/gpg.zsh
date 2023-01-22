@@ -15,5 +15,5 @@ gpg-relay() {
     # You could create a gpg-relay daemon on wsl. I'm doing it this way
     # because my weird use cases require both my gpg installs on wsl and win.
     gpgconf --kill gpg-agent
-    exec socat $GNUPGHOME/S.gpg-agent,fork, EXEC:'wsl-relay.exe --input-closes --pipe-closes --gpg',nofork
+    exec socat UNIX-LISTEN:$GNUPGHOME/S.gpg-agent,fork, EXEC:'wsl-relay.exe --input-closes --pipe-closes --gpg',nofork
 }
