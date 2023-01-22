@@ -24,6 +24,7 @@ backup_rm() {
 	if [ -e "$FILE" ]; then
 		bak=$(nextsuffix "$FILE")
 		mv "$FILE" "$bak"
+		echo Backed up "$FILE" to "$bak"
 	fi
 }
 
