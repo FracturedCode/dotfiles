@@ -43,7 +43,7 @@ zstyle ':omz:update' mode reminder  # reminder|disabled|auto
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autocomplete docker)
+plugins=(zsh-autocomplete docker dotnet)
 
 
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST # Autocompletion is annoying in the home directory, so move it away.
@@ -53,6 +53,7 @@ source $ZSH/oh-my-zsh.sh
 fpath+=($ZSH_CUSTOM/completions); export fpath
 
 ## User configuration
-
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 
 # To customize prompt, run `p10k configure` or edit $ZSH_CUSTOM/p10k.zsh.
