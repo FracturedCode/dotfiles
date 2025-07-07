@@ -3,3 +3,7 @@ nano
 
 git
 	~/.gitconfig
+
+gpg
+	~/.gnupg
+

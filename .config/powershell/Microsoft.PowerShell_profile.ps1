@@ -4,6 +4,9 @@ $Env:XDG_DATA_HOME = "$HOME/.local/share"
 $Env:XDG_STATE_HOME = "$HOME/.local/state"
 
 # Variables
+$Env:GPG_TTY = (tty)
+$Env:GNUPGHOME = $XDG_CONFIG_HOME/gnupg
+
 
 # Path
 
