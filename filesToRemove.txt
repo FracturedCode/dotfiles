@@ -1,0 +1,5 @@
+nano
+	~/.nanorc
+
+git
+	~/.gitconfig

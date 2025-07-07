@@ -22,6 +22,10 @@ function Assert-IsInteractiveShell {
 
 # Aliases
 function gs { git status }
+function wget {
+    # https://stackoverflow.com/questions/47548271/disable-wget-history-tracking/54843736
+    wget --hsts-file $XDG_STATE_HOME/wget/hsts $args
+}
 
 # Prompt
 if (Assert-IsInteractiveShell) {
