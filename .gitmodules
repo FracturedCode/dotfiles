@@ -5,7 +5,7 @@
 	path = configurations/zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 [submodule "configurations/nano/syntax-highlighting"]
-	path = configurations/nano/syntax-highlighting
+	path = .config/nano/syntax-highlighting
 	url = https://github.com/scopatz/nanorc.git
 [submodule "configurations/zsh/ohmyzsh"]
 	path = configurations/zsh/ohmyzsh
