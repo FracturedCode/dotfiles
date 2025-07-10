@@ -3,9 +3,13 @@ $Env:XDG_CONFIG_HOME = "$HOME/.config"
 $Env:XDG_DATA_HOME = "$HOME/.local/share"
 $Env:XDG_STATE_HOME = "$HOME/.local/state"
 
+$XDG_CONFIG_HOME = $Env:XDG_CONFIG_HOME
+$XDG_DATA_HOME = $Env:XDG_DATA_HOME
+$XDG_STATE_HOME = $Env:XDG_STATE_HOME
+
 # Variables
 $Env:GPG_TTY = (tty)
-$Env:GNUPGHOME = $XDG_CONFIG_HOME/gpg
+$Env:GNUPGHOME = "$XDG_CONFIG_HOME/gpg"
 $Env:LANG="en_US.UTF-8"
 $Env:EDITOR="nano"
 
