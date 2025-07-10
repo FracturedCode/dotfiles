@@ -1,0 +1,16 @@
+#!/bin/sh
+
+confirm_continue() {
+    local prompt="${1:-Continue}"
+    echo -n "$prompt (Y/n): "
+    read answer
+    if [ "${answer,,}" != "y" ]; then
+        exit 1
+    fi
+}
+
+confirm_continue "This is a destructive operation, continue?"
+
+rm $HOME/.nanorc
+rm $HOME/.gitconfig
+rm $HOME/.gnupg

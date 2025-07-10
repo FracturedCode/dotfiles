@@ -1,9 +1,0 @@
-nano
-	~/.nanorc
-
-git
-	~/.gitconfig
-
-gpg
-	~/.gnupg
-
