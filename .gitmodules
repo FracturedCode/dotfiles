@@ -1,8 +1,8 @@
 [submodule "configurations/zsh/custom/plugins/zsh-autocomplete"]
-	path = configurations/zsh/custom/plugins/zsh-autocomplete
+	path = .config/zsh/custom/plugins/zsh-autocomplete
 	url = https://github.com/marlonrichert/zsh-autocomplete.git
 [submodule "configurations/zsh/custom/themes/powerlevel10k"]
-	path = configurations/zsh/custom/themes/powerlevel10k
+	path = .config/zsh/custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
 [submodule "configurations/nano/syntax-highlighting"]
 	path = .config/nano/syntax-highlighting

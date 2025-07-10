@@ -28,30 +28,7 @@
 # GNUPGHOME
 # INSTALL_CONFIGS # a space delimited list of programs to install configs for
 
-set -e # fail on any error and output a message
-trap '
-LE_EXITCODE=$?
-if [ $LE_EXITCODE != 0 ]; then
-	echo -e "${RED}Script failed with exit code $LE_EXITCODE. View stderr for more info.${NOCOLOR}"
-fi
-exit' EXIT
-
 . ./common.sh
 
 export CONFIG=${XDG_CONFIG_HOME:-$HOME/.config}
-export ZDOTDIR
-export ZSH=${ZSH:-$CONFIG/oh-my-zsh}
-export ZSH_CUSTOM=${ZSH_CUSTOM:-$ZSH/custom}
 export GNUPGHOME=${GNUPGHOME:-$CONFIG/gnupg}
-
-echog "--- Installing dotfiles. Config home: $CONFIG ---"
-
-INSTALL_CONFIGS=${INSTALL_CONFIGS:-"git nano zsh wget gpg"}
-for program in $INSTALL_CONFIGS; do
-	echo "Installing config for: $program"
-	. ./configurations/$program/install.sh
-done
-
-if [ ! -z ${SUDO_USER+x} ]; then
-	chown -R $SUDO_USER .
-fi
