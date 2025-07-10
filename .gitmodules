@@ -8,5 +8,5 @@
 	path = .config/nano/syntax-highlighting
 	url = https://github.com/scopatz/nanorc.git
 [submodule "configurations/zsh/ohmyzsh"]
-	path = configurations/zsh/ohmyzsh
+	path = .config/zsh/oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
