@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c "echo '3-12' | tee /sys/bus/usb/drivers/usb/unbind "
+ExecStart=/bin/bash -c "echo '3-12' | tee /sys/bus/usb/drivers/usb/unbind"
 RemainAfterExit=true
 User=root
 
