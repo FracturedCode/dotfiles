@@ -11,7 +11,8 @@
     "primary": "#08a1ec",
     "powerline_text": "#100e23",
     "ok": "#689f38",
-    "warn": "#ff9248"
+    "warn": "#ff9248",
+    "error": "red"
   },
   "upgrade": {
     "notice": false,
@@ -67,14 +68,6 @@
           "style": "powerline",
           "template": " {{ .WorkspaceName }} ",
           "type": "terraform"
-        },
-        {
-          "background": "#ff8080",
-          "foreground": "#ffffff",
-          "powerline_symbol": "\ue0b0",
-          "style": "powerline",
-          "template": " error ",
-          "type": "status"
         }
       ],
       "type": "prompt"
@@ -83,10 +76,15 @@
       "alignment": "right",
       "segments": [
         {
-          "foreground": "p:primary",
+          "foreground_templates": [
+            "{{ if .Error }}p:error{{ else }}p:ok{{ end }}"
+          ],
           "style": "plain",
-          "template": " {{ .Name }}",
-          "type": "shell"
+          "properties": {
+            "always_enabled": true
+          },
+          "template": " {{ if .Error }}✖ {{ .String }}{{ else }}✔{{ end }}",
+          "type": "status"
         },
         {
           "foreground": "p:ok",
@@ -98,6 +96,12 @@
           "style": "plain",
           "template": " <p:divider,>|</> {{ .FormattedMs }}",
           "type": "executiontime"
+        },
+        {
+          "foreground": "p:primary",
+          "style": "plain",
+          "template": " <p:divider,>|</> {{ .Name }}",
+          "type": "shell"
         },
         {
           "foreground": "p:divider",
