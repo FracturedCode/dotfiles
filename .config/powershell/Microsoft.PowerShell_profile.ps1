@@ -9,7 +9,7 @@ $XDG_STATE_HOME = $Env:XDG_STATE_HOME
 
 # Variables
 $Env:GPG_TTY = (tty)
-$Env:GNUPGHOME = "$XDG_CONFIG_HOME/gpg"
+$Env:GNUPGHOME = "$XDG_CONFIG_HOME/gnupg"
 $Env:LANG="en_US.UTF-8"
 $Env:EDITOR="nano"
 
