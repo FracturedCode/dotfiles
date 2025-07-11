@@ -1,0 +1,9 @@
+{
+    "editor.insertSpaces": false,
+    "files.enableTrash": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true,
+    "workbench.colorTheme": "Victor's Dark Horizon"
+}
