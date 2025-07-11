@@ -35,6 +35,7 @@ function wget {
     # https://stackoverflow.com/questions/47548271/disable-wget-history-tracking/54843736
     wget --hsts-file $XDG_STATE_HOME/wget/hsts $args
 }
+Set-Alias -Name top -Value btop
 
 # Prompt
 if (Assert-IsInteractiveShell) {
