@@ -7,7 +7,11 @@
   "console_title_template": "{{ .PWD }}",
   "palette": {
     "filler": "#444444",
-    "divider": "#525252"
+    "divider": "#525252",
+    "primary": "#08a1ec",
+    "powerline_text": "#100e23",
+    "ok": "#689f38",
+    "warn": "#ff9248"
   },
   "upgrade": {
     "notice": false,
@@ -93,13 +97,7 @@
           "type": "shell"
         },
         {
-          "foreground": "#ff8080",
-          "style": "plain",
-          "template": " <#757575,>as</> root",
-          "type": "root"
-        },
-        {
-          "foreground": "#689f38",
+          "foreground": "p:ok",
           "properties": {
             "always_enabled": true,
             "threshold": 1,
@@ -110,9 +108,9 @@
           "type": "executiontime"
         },
         {
-          "foreground": "#757575",
+          "foreground": "p:divider",
           "style": "plain",
-          "template": " <p:divider,>|</> {{ if .SSHSession }}{{ end }}{{ .UserName }}@{{ .HostName }} ",
+          "template": " <p:divider,>|</> {{ if .SSHSession }}{{ end }}{{ if .Root }}<p:warn>{{ .UserName }}</>{{ else }}{{ .UserName }}{{ end }}@{{ .HostName }} ",
           "type": "session"
         }
       ],
@@ -127,7 +125,7 @@
         {
           "foreground": "p:filler",
           "style": "plain",
-          "template": "╰─",
+          "template": "{{ if .Root }}╰<p:warn,>#</>{{ else }}╰─{{ end }}",
           "type": "text"
         }
       ],
