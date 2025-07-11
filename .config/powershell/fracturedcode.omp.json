@@ -6,7 +6,7 @@
   "shell_integration": true,
   "console_title_template": "{{ .PWD }}",
   "palette": {
-    "filler": "#444444",
+    "filler": "#303030",
     "divider": "#525252",
     "primary": "#08a1ec",
     "powerline_text": "#100e23",
@@ -107,7 +107,7 @@
         }
       ],
       "type": "prompt",
-      "filler": "<p:filler,>─</>",
+      "filler": "<p:filler>─</>",
       "overflow": "hide"
     },
     {
