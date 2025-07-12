@@ -121,7 +121,7 @@
         {
           "foreground": "p:filler",
           "style": "plain",
-          "template": "{{ if .Root }}╰<p:warn,>#</>{{ else }}╰─{{ end }}",
+          "template": "{{ if .Root }}╰#{{ else }}╰─{{ end }}",
           "type": "text"
         }
       ],

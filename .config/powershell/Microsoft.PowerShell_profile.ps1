@@ -39,6 +39,13 @@ Set-Alias -Name top -Value btop
 
 # Prompt
 if (Assert-IsInteractiveShell) {
+    
+    Import-Module PSReadLine
+    Import-Module CompletionPredictor
+    Import-Module DirectoryPredictor
+    Set-PSReadLineOption -PredictionSource HistoryAndPlugin
+    Set-PSReadLineOption -PredictionViewStyle ListView
+
 	hyfetch -b fastfetch
 	oh-my-posh init pwsh --config $PSScriptRoot/fracturedcode.omp.json | Invoke-Expression
 }

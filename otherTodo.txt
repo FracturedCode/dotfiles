@@ -1,5 +1,3 @@
 add wget alias to zsh config
 create $XDG_STATE_HOME/wget in boostrap or save hsts file to yadm
-transient prompt
-autocomplete
 tooltips
