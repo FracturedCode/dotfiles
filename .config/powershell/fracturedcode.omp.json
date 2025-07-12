@@ -127,5 +127,9 @@
       ],
       "type": "prompt"
     }
-  ]
+  ],
+  "secondary_prompt": {
+    "foreground": "p:divider",
+    "template": " ⪢ "
+  }
 }

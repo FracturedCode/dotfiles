@@ -1,8 +1,5 @@
 add wget alias to zsh config
 create $XDG_STATE_HOME/wget in boostrap or save hsts file to yadm
-systemd enable user services
-bootstrap visudo allow the tee command for the keyboard backlight service
 transient prompt
-secondary prompt
 autocomplete
 tooltips
