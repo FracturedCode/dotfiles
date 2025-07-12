@@ -29,6 +29,12 @@ function Assert-IsInteractiveShell {
     return $false
 }
 
+function ls {
+    Get-ChildItem -Force $args | `
+        Select-Object UnixMode, User, Group, LastWriteTime, Size, @{ Name = "Name"; Expression = {Format-TerminalIcons $_} } | `
+        Format-Table
+}
+
 # Aliases
 function gs { git status }
 function wget {
