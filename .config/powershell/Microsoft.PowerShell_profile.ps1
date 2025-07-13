@@ -13,7 +13,6 @@ $Env:GNUPGHOME = "$XDG_CONFIG_HOME/gnupg"
 $Env:LANG="en_US.UTF-8"
 $Env:EDITOR="nano"
 
-
 # Path
 
 # Functions
@@ -29,10 +28,20 @@ function Assert-IsInteractiveShell {
     return $false
 }
 
-function ls {
+function Get-CustomFormatChildItem {
     Get-ChildItem -Force $args | `
         Select-Object UnixMode, User, Group, LastWriteTime, Size, @{ Name = "Name"; Expression = {Format-TerminalIcons $_} } | `
         Format-Table
+}
+
+function Install-Modules {
+    params([string[]]$modules)
+    $modules | Foreach-Object {
+        if (-not (Get-Module -ListAvailable -Name $_)) {
+            Write-Host "$_ not found. Installing"
+            Install-Module -Name $_ -Force -Scope CurrentUser
+        }
+    }
 }
 
 # Aliases
@@ -42,6 +51,11 @@ function wget {
     wget --hsts-file $XDG_STATE_HOME/wget/hsts $args
 }
 Set-Alias -Name top -Value btop
+Set-Alias -Name ls -Value Get-CustomFormatChildItem
+
+# Modules
+
+Install-Modules @("PSReadLine", "CompletionPredictor", "DirectoryPredictor", "Terminal-Icons")
 
 # Prompt
 if (Assert-IsInteractiveShell) {
