@@ -12,7 +12,8 @@
     "powerline_text": "#100e23",
     "ok": "#689f38",
     "warn": "#ff9248",
-    "error": "red"
+    "error": "red",
+    "bg": "transparent"
   },
   "upgrade": {
     "notice": false,
@@ -62,12 +63,55 @@
           "type": "git"
         },
         {
-          "background": "#ffee58",
-          "foreground": "#100e23",
-          "powerline_symbol": "\ue0b0",
-          "style": "powerline",
-          "template": " {{ .WorkspaceName }} ",
+          "background": "p:bg",
+          "foreground": "p:primary",
+          "style": "plain",
+          "template": "<p:divider>|</>  {{ .WorkspaceName }} ",
           "type": "terraform"
+        },
+        {
+          "type": "nix-shell",
+          "style": "plain",
+          "foreground": "p:primary",
+          "background": "p:bg",
+          "template": "<p:divider>|</> \uf313 nix-{{ .Type }} "
+        },
+        {
+          "type": "aws",
+          "style": "plain",
+          "foreground": "p:primary",
+          "background": "p:bg",
+          "template": "<p:divider>|</>  {{.Profile}}{{if .Region}}@{{.Region}}{{end}} "
+        },
+        {
+          "type": "dotnet",
+          "properties": {
+            "fetch_version": false
+          },
+          "foreground": "p:primary",
+          "background": "p:bg",
+          "template": "<p:divider>|</> 󰪮  ",
+          "style": "plain"
+        },
+        {
+          "type": "python",
+          "properties": {
+            "display_mode": "context"
+          },
+          "foreground": "p:primary",
+          "background": "p:bg",
+          "style": "plain",
+          "template": "<p:divider>|</>  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+        },
+        {
+          "type": "rust",
+          "properties": {
+            "fetch_version": false
+          },
+          "foreground": "p:primary",
+          "background": "p:bg",
+          "style": "plain",
+          "template": "<p:divider>|</>  "
         }
       ],
       "type": "prompt"
@@ -131,5 +175,7 @@
   "secondary_prompt": {
     "foreground": "p:divider",
     "template": " ⪢ "
-  }
+  },
+  "tooltips": [
+  ]
 }

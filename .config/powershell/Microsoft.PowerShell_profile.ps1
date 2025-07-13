@@ -35,7 +35,7 @@ function Get-CustomFormatChildItem {
 }
 
 function Install-Modules {
-    params([string[]]$modules)
+    param([string[]]$modules)
     $modules | Foreach-Object {
         if (-not (Get-Module -ListAvailable -Name $_)) {
             Write-Host "$_ not found. Installing"
