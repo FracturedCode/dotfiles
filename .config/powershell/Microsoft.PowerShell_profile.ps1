@@ -12,6 +12,7 @@ $Env:GPG_TTY = (tty)
 $Env:GNUPGHOME = "$XDG_CONFIG_HOME/gnupg"
 $Env:LANG="en_US.UTF-8"
 $Env:EDITOR="nano"
+$Env:LS_COLORS = (vivid generate molokai)
 
 # Path
 
@@ -59,13 +60,15 @@ Install-Modules @("PSReadLine", "CompletionPredictor", "DirectoryPredictor", "Te
 
 # Prompt
 if (Assert-IsInteractiveShell) {
-    
-    Import-Module PSReadLine
-    Import-Module CompletionPredictor
-    Import-Module DirectoryPredictor
-    Set-PSReadLineOption -PredictionSource HistoryAndPlugin
-    Set-PSReadLineOption -PredictionViewStyle ListView
 
 	hyfetch -b fastfetch
 	oh-my-posh init pwsh --config $PSScriptRoot/fracturedcode.omp.json | Invoke-Expression
+
+	$Env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
+	$Env:CARAPACE_MATCH = "1"
+	$Env:CARAPACE_TOOLTIP = "0"
+	Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
+	Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+	Set-PSReadLineOption -BellStyle None  
+	carapace _carapace | Out-String | Invoke-Expression
 }
