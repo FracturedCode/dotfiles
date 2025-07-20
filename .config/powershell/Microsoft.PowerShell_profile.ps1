@@ -61,7 +61,7 @@ Install-Modules @("PSReadLine", "Terminal-Icons")
 # Prompt
 if (Assert-IsInteractiveShell) {
 
-	hyfetch -b fastfetch
+	. $PSScriptRoot/motd.ps1
 	oh-my-posh init pwsh --config $PSScriptRoot/fracturedcode.omp.json | Invoke-Expression
 
 	$Env:CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
