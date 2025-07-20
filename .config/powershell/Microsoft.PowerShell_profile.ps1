@@ -18,45 +18,45 @@ $Env:LS_COLORS = (vivid generate molokai)
 
 # Functions
 function Assert-IsInteractiveShell {
-    # Test each Arg for match of abbreviated '-NonInteractive' command.
-    $NonInteractive = [Environment]::GetCommandLineArgs() | Where-Object{ $_ -like '-NonI*' }
+	# Test each Arg for match of abbreviated '-NonInteractive' command.
+	$NonInteractive = [Environment]::GetCommandLineArgs() | Where-Object{ $_ -like '-NonI*' }
 
-    if ([Environment]::UserInteractive -and -not $NonInteractive) {
-        # We are in an interactive shell.
-        return $true
-    }
+	if ([Environment]::UserInteractive -and -not $NonInteractive) {
+		# We are in an interactive shell.
+		return $true
+	}
 
-    return $false
+	return $false
 }
 
 function Get-CustomFormatChildItem {
-    Get-ChildItem -Force $args | `
-        Select-Object UnixMode, User, Group, LastWriteTime, Size, @{ Name = "Name"; Expression = {Format-TerminalIcons $_} } | `
-        Format-Table
+	Get-ChildItem -Force $args | `
+		Select-Object UnixMode, User, Group, LastWriteTime, Size, @{ Name = "Name"; Expression = {Format-TerminalIcons $_} } | `
+		Format-Table
 }
 
 function Install-Modules {
-    param([string[]]$modules)
-    $modules | Foreach-Object {
-        if (-not (Get-Module -ListAvailable -Name $_)) {
-            Write-Host "$_ not found. Installing"
-            Install-Module -Name $_ -Force -Scope CurrentUser
-        }
-    }
+	param([string[]]$modules)
+	$modules | Foreach-Object {
+		if (-not (Get-Module -ListAvailable -Name $_)) {
+			Write-Host "$_ not found. Installing"
+			Install-Module -Name $_ -Force -Scope CurrentUser
+		}
+	}
 }
 
 # Aliases
 function gs { git status }
 function wget {
-    # https://stackoverflow.com/questions/47548271/disable-wget-history-tracking/54843736
-    wget --hsts-file $XDG_STATE_HOME/wget/hsts $args
+	# https://stackoverflow.com/questions/47548271/disable-wget-history-tracking/54843736
+	wget --hsts-file $XDG_STATE_HOME/wget/hsts $args
 }
 Set-Alias -Name top -Value btop
 Set-Alias -Name ls -Value Get-CustomFormatChildItem
 
 # Modules
 
-Install-Modules @("PSReadLine", "CompletionPredictor", "DirectoryPredictor", "Terminal-Icons")
+Install-Modules @("PSReadLine", "Terminal-Icons")
 
 # Prompt
 if (Assert-IsInteractiveShell) {
