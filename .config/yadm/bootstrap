@@ -19,7 +19,7 @@ which systemctl
 if [ $? -eq 0 ]; then
 	for file in $HOME/.config/systemd/user/*; do
 		if [ -f "$file" ]; then
-			echo "Processing user service: $(basename "$file")"
+			echo "Processing user service: $(basename '$file')"
 			systemctl --user enable $file
 			systemctl --user daemon-reload
 			systemctl --user start $file
