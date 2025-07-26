@@ -7,9 +7,9 @@
 	ds = diff --staged
 	uncommit = reset HEAD^
 [user]
-	name = Gabe C
-	email = gabe@fracturedcode.net
-	signingkey = 29A6BCF712707FC45273149326417CCB774E8872
+	name = Jesse C
+	email = jesse@fracturedcode.net
+	signingkey = B2411D1DBCB4B39A120145146852139AB23C77B5
 [push]
 	autoSetupRemote = true
 [status]
