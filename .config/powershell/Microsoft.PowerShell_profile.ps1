@@ -15,6 +15,7 @@ $Env:EDITOR="nano"
 $Env:LS_COLORS = (vivid generate molokai)
 
 # Path
+$Env:PATH += ":$HOME/.local/bin"
 
 # Functions
 function Assert-IsInteractiveShell {
