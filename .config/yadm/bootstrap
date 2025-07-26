@@ -9,6 +9,12 @@ confirm_continue() {
 	fi
 }
 
+# This hides files we don't want visible in $HOME
+cd "$HOME"
+yadm submodule update --recursive --init
+yadm gitconfig core.sparseCheckout true
+yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules'
+
 confirm_continue "This is a destructive operation, continue?"
 
 rm $HOME/.nanorc
