@@ -17,7 +17,7 @@ curl https://raw.githubusercontent.com/FracturedCode/dotfiles/refs/heads/master/
 ## Compatibility
 
 OS:
-- Windows 10
+- Windows 10 (WIP)
 - Linux, tested specifically on
 	- Alpine
 	- Arch

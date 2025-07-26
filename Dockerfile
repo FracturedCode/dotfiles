@@ -19,4 +19,6 @@ RUN mkdir -p ~/.local/bin && curl -s https://ohmyposh.dev/install.sh | bash -s -
 RUN yadm clone https://github.com/FracturedCode/dotfiles.git \
 	&& yadm bootstrap
 
+RUN pwsh
+
 ENTRYPOINT [ "/usr/bin/pwsh" ]
