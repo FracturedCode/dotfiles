@@ -6,7 +6,7 @@ yadm submodule update --recursive --init
 yadm gitconfig core.sparseCheckout true
 yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules' '!Dockerfile'
 
-# This removes clutter from $HOME that we attempt to configure in a more XDG-compliant way
+# This removes clutter from $HOME in order to configure in a more XDG-compliant way
 
 rm $HOME/.nanorc
 rm $HOME/.gitconfig

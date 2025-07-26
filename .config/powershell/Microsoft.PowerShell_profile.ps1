@@ -13,6 +13,7 @@ $Env:GNUPGHOME = "$XDG_CONFIG_HOME/gnupg"
 $Env:LANG="en_US.UTF-8"
 $Env:EDITOR="nano"
 $Env:LS_COLORS = (vivid generate molokai)
+$Env:USER ??= (whoami)
 
 # Path
 $Env:PATH += ":$HOME/.local/bin"

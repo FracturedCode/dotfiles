@@ -19,6 +19,7 @@ curl https://raw.githubusercontent.com/FracturedCode/dotfiles/refs/heads/master/
 OS:
 - Windows 10
 - Linux, tested specifically on
+	- Alpine
 	- Arch
 - MacOS 15
 
@@ -39,8 +40,14 @@ yadm clone git@github.com:FracturedCode/dotfiles.git
 It is recommended to run the bootstrap script when prompted, or manually with `yadm bootstrap`.
 
 > [!WARNING]
-> The bootstrap script is destructive! It removes clutter from $HOME that we attempt to configure in a more XDG-compliant way.
+> The bootstrap script is destructive! It removes clutter from $HOME in order to configure in a more XDG-compliant way.
 
+## Recommmended software
+
+For the prompt:
+- zsh or pwsh (pwsh preferred)
+- [Oh My Posh](https://ohmyposh.dev/)
+- [vivid](https://github.com/sharkdp/vivid)
 
 ## Yadm configuration
 
