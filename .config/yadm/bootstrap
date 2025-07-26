@@ -13,7 +13,7 @@ confirm_continue() {
 cd "$HOME"
 yadm submodule update --recursive --init
 yadm gitconfig core.sparseCheckout true
-yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules'
+yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules' 'DOCKERFILE'
 
 confirm_continue "This is a destructive operation, continue?"
 
