@@ -10,7 +10,7 @@ yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules' '
 
 rm $HOME/.nanorc
 rm $HOME/.gitconfig
-rm $HOME/.gnupg
+rmdir $HOME/.gnupg
 
 # This enables the user systemctl services
 which systemctl

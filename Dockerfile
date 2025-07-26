@@ -4,7 +4,7 @@ ARG USER=jess
 ENV HOME /home/$USER
 
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-	&& apk add --update sudo git yadm powershell carapace hyfetch fastfetch
+	&& apk add --update sudo git yadm powershell carapace hyfetch fastfetch vivid curl
 
 # add new user
 RUN adduser -D $USER \
@@ -14,10 +14,7 @@ RUN adduser -D $USER \
 USER $USER
 WORKDIR $HOME
 
-# files in /home/$USER to be owned by $USER
-# docker has --chown flag for COPY, but it does not expand ENV so we fallback to:
-# COPY src src
-# RUN sudo chown -R $USER:$USER $HOME
+RUN mkdir -p ~/.local/bin && curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 
 RUN yadm clone https://github.com/FracturedCode/dotfiles.git \
 	&& yadm bootstrap
