@@ -1,26 +1,18 @@
 #!/bin/sh
 
-confirm_continue() {
-	local prompt="${1:-Continue}"
-	echo -n "$prompt (Y/n): "
-	read answer
-	if [ "${answer,,}" != "y" ]; then
-		exit 1
-	fi
-}
-
-# This hides files we don't want visible in $HOME
+# This hides files we don't want visible in $HOME, but want in the repo nontheless.
 cd "$HOME"
 yadm submodule update --recursive --init
 yadm gitconfig core.sparseCheckout true
-yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules' 'DOCKERFILE'
+yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules' '!Dockerfile'
 
-confirm_continue "This is a destructive operation, continue?"
+# This removes clutter from $HOME that we attempt to configure in a more XDG-compliant way
 
 rm $HOME/.nanorc
 rm $HOME/.gitconfig
 rm $HOME/.gnupg
 
+# This enables the user systemctl services
 which systemctl
 if [ $? -eq 0 ]; then
 	for file in $HOME/.config/systemd/user/*; do

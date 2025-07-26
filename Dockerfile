@@ -4,7 +4,7 @@ ARG USER=jess
 ENV HOME /home/$USER
 
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-	&& apk add --update sudo openssh git yadm powershell carapace hyfetch fastfetch
+	&& apk add --update sudo git yadm powershell carapace hyfetch fastfetch
 
 # add new user
 RUN adduser -D $USER \
@@ -19,7 +19,7 @@ WORKDIR $HOME
 # COPY src src
 # RUN sudo chown -R $USER:$USER $HOME
 
-RUN yadm clone git@github.com:FracturedCode/dotfiles.git \
+RUN yadm clone https://github.com/FracturedCode/dotfiles.git \
 	&& yadm bootstrap
 
 ENTRYPOINT [ "/usr/bin/pwsh" ]
