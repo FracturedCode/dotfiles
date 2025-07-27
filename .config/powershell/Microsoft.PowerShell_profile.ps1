@@ -2,10 +2,12 @@
 $Env:XDG_CONFIG_HOME = "$HOME/.config"
 $Env:XDG_DATA_HOME = "$HOME/.local/share"
 $Env:XDG_STATE_HOME = "$HOME/.local/state"
+$Env:XDG_CACHE_HOME = "$HOME/.cache"
 
 $XDG_CONFIG_HOME = $Env:XDG_CONFIG_HOME
 $XDG_DATA_HOME = $Env:XDG_DATA_HOME
 $XDG_STATE_HOME = $Env:XDG_STATE_HOME
+$XDG_CACHE_HOME = $Env:XDG_CACHE_HOME
 
 # Variables
 $Env:GPG_TTY = (tty)
