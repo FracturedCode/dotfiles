@@ -4,7 +4,7 @@
 cd "$HOME"
 yadm submodule update --recursive --init
 yadm gitconfig core.sparseCheckout true
-yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules' '!Dockerfile'
+yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules' '!Dockerfile' '!prompt-*.png'
 
 # Add some of the XDG directories
 mkdir -p $HOME/.config $HOME/.local/state $HOME/.local/share

@@ -1,23 +1,27 @@
 # FracturedCode/dotfiles
 
-Blurb
+## Images
 
-## Try it out
+### History search
+![history search](prompt-1.png)
+### Tab completion (with [carapace](https://github.com/carapace-sh/carapace-bin))
+![carapace completion](prompt-2.png)
+### Non-zero exit code
+![non-zero exit from home](prompt-3.png)
+### ls output
+![ls](prompt-4.png)
 
-Prereqs to try it out:
-- docker
-- curl
+## Try it out with docker (leave no trace)
 
 ```sh
 curl https://raw.githubusercontent.com/FracturedCode/dotfiles/refs/heads/master/Dockerfile \
-	| docker build --build-arg "USER=$USER" -t FracturedCode/dotfiles -f - . \
+	| docker build --build-arg "USER=$(whoami)" -t FracturedCode/dotfiles -f - . \
 	&& docker run --rm -it FracturedCode/dotfiles
 ```
 
 ## Compatibility
 
 OS:
-- Windows 10 (WIP)
 - Linux, tested specifically on
 	- Alpine
 	- Arch
@@ -48,6 +52,9 @@ For the prompt:
 - zsh or pwsh (pwsh preferred)
 - [Oh My Posh](https://ohmyposh.dev/)
 - [vivid](https://github.com/sharkdp/vivid)
+- [carapace](https://github.com/carapace-sh/carapace-bin)
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+
 
 ## Yadm configuration
 
