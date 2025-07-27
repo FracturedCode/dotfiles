@@ -73,6 +73,7 @@ if (Assert-IsInteractiveShell) {
 	$Env:CARAPACE_TOOLTIP = "0"
 	Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
 	Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-	Set-PSReadLineOption -BellStyle None  
+	Set-PSReadLineOption -BellStyle None
+	Set-PSReadLineOption -PredictionViewStyle ListView
 	carapace _carapace | Out-String | Invoke-Expression
 }
