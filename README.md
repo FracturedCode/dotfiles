@@ -15,7 +15,7 @@
 
 ```sh
 curl https://raw.githubusercontent.com/FracturedCode/dotfiles/refs/heads/master/Dockerfile \
-	| docker build --build-arg "USER=$(whoami)" -t FracturedCode/dotfiles -f - . \
+	| docker build --build-arg "USER=$(whoami)" -t FracturedCode/dotfiles - \
 	&& docker run --rm -it FracturedCode/dotfiles
 ```
 
