@@ -2,24 +2,20 @@
 	pretty = log --pretty=format:'%C(yellow)%h %C(green)%ad %C(cyan)[%an] %Creset%s' --date=format:'%F %T' --decorate --graph
 	pop = stash pop
 	rename = branch -m
-	forcepull = !~/forcepull.sh
 	show-files = show --name-status
 	ds = diff --staged
 	uncommit = reset HEAD^
-[user]
-	name = Jesse C
-	email = jesse@fracturedcode.net
-	signingkey = B2411D1DBCB4B39A120145146852139AB23C77B5
+	famend = !git commit --amend --no-edit && git push -f
+	ap = add --patch
+	root = rev-parse --show-toplevel
+[include]
+	path = "user.ini"
 [push]
 	autoSetupRemote = true
 [status]
 	showUntrackedFiles = all
 [pager]
 	pretty = less -X -F
-[commit]
-	gpgsign = true
-[tag]
-	gpgsign = true
 [core]
 	editor = nano
 	pager = delta
