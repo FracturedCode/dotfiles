@@ -15,7 +15,13 @@
 
 ```sh
 curl https://raw.githubusercontent.com/FracturedCode/dotfiles/refs/heads/master/Dockerfile \
-	| docker build --build-arg "USER=$(whoami)" -t FracturedCode/dotfiles - \
+	| docker build --build-arg "USER=$(whoami)" --target try-remote -t FracturedCode/dotfiles - \
+	&& docker run --rm -it FracturedCode/dotfiles
+```
+
+Or, if you git cloned the repo and want to try out your local changes:
+```sh
+docker build --build-arg "USER=$(whoami)" --target try-local -t FracturedCode/dotfiles . \
 	&& docker run --rm -it FracturedCode/dotfiles
 ```
 
