@@ -1,4 +1,4 @@
-#!/usr/bin/env pwsh
+#!/usr/bin/env -S pwsh -NoProfile
 
 # XDG
 $Env:XDG_CONFIG_HOME="$HOME/.config"

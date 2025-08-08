@@ -4,7 +4,8 @@ ARG USER=jess
 ENV HOME /home/$USER
 
 RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-	&& apk add --update sudo git yadm powershell carapace hyfetch fastfetch vivid curl
+	&& apk add --update sudo git yadm powershell carapace hyfetch fastfetch vivid curl \
+	&& apk add --no-cache coreutils
 
 # add new user
 RUN addgroup $USER \
@@ -24,6 +25,11 @@ FROM base AS try-local
 ARG USER=jess
 
 COPY --chown=$USER:$USER . ./dotfiles
+RUN cd ./dotfiles \
+	&& git config user.email 'test@test.com' \
+	&& git config user.name 'testy mctestface' \
+	&& git add . \
+	&& git commit -m "WIP"
 RUN yadm clone "$(realpath ./dotfiles)" \
 	&& yadm bootstrap
 
