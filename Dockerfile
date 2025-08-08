@@ -29,7 +29,7 @@ RUN cd ./dotfiles \
 	&& git config user.email 'test@test.com' \
 	&& git config user.name 'testy mctestface' \
 	&& git add . \
-	&& git commit -m "WIP"
+	&& git commit -m "WIP" || true
 RUN yadm clone "$(realpath ./dotfiles)" \
 	&& yadm bootstrap
 
