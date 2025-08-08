@@ -1,29 +1,18 @@
-#!/bin/sh
+#!/usr/bin/env pwsh -NoProfile
+
+# Source env
+. $HOME/.config/powershell/env.ps1
 
 # This hides files we don't want visible in $HOME, but want in the repo nontheless.
-cd "$HOME"
+Set-Location "$HOME"
 yadm submodule update --recursive --init
 yadm gitconfig core.sparseCheckout true
 yadm sparse-checkout set --no-cone '/*' '!README.md' '!LICENSE' '!.gitmodules' '!Dockerfile' '!prompt-*.png'
 
 # Add some of the XDG directories
-mkdir -p $HOME/.config $HOME/.local/state $HOME/.local/share
+mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
 
-# This removes clutter from $HOME in order to configure in a more XDG-compliant way
-
-rm $HOME/.nanorc
-rm $HOME/.gitconfig
-rmdir $HOME/.gnupg
-
-# This enables the user systemctl services
-which systemctl
-if [ $? -eq 0 ]; then
-	for file in $HOME/.config/systemd/user/*; do
-		if [ -f "$file" ]; then
-			echo "Processing user service: $(basename '$file')"
-			systemctl --user enable $file
-			systemctl --user daemon-reload
-			systemctl --user start $file
-		fi
-	done
-fi
+# Execute tool-specific bootstrap scripts
+Get-ChildItem "$XDG_CONFIG_HOME/*/bootstrap.sh" | Foreach-Object {
+	&$_.FullName
+}
