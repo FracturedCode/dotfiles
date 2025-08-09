@@ -2,3 +2,4 @@
 
 mkdir -p $XDG_DATA_HOME/icons
 [[ -d ~/.icons ]] && mv ~/.icons/* $XDG_DATA_HOME/icons
+rmdir ~/.icons
