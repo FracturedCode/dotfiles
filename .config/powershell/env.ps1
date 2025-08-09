@@ -34,7 +34,8 @@ function Set-DotEnv {
 		}
 		$equalsSign = $_.IndexOf('=')
 		$name = $_.Substring(0, $equalsSign)
-		$value = Invoke-Expression -Command $_.Substring($equalsSign + 1)
+		$rightHand = $_.Substring($equalsSign + 1)
+		$value = Invoke-Expression -Command $rightHand
 		Set-Content env:\$name $value
 	}
 }
