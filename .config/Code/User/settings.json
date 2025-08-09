@@ -5,5 +5,8 @@
     "explorer.confirmDragAndDrop": false,
     "files.autoSave": "afterDelay",
     "editor.formatOnSave": true,
-    "workbench.colorTheme": "Victor's Dark Horizon"
+    "workbench.colorTheme": "Victor's Dark Horizon",
+    "editor.fontFamily": "'Hack Nerd Font'",
+    "terminal.integrated.fontFamily": "'Hack Nerd Font'",
+    "workbench.editor.empty.hint": "hidden"
 }
