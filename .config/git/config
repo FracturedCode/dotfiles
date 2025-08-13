@@ -8,6 +8,7 @@
 	famend = !git commit --amend --no-edit && git push -f
 	ap = add --patch
 	root = rev-parse --show-toplevel
+	ap = add --patch
 [include]
 	path = "user.ini"
 [push]

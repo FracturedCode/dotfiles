@@ -24,5 +24,4 @@ unbind ^C	main
 bind ^Z	suspend	main
 
 ## Improved Nano Syntax Highlighting Files
-# https://github.com/scopatz/nanorc
-#include <CONFIG_DIR>/nano/syntax-highlighting/*.nanorc TODO REPLACE @ RUNTIME SCRIPT
+include ~/.config/nano/syntax-highlighting/*.nanorc

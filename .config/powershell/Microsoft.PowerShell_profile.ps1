@@ -1,3 +1,8 @@
+# Machine-specific optional script
+if (Test-Path $PSScriptRoot/machine-specific.ps1) {
+	. $PSScriptRoot/machine-specific.ps1
+}
+
 # Variables
 . $PSScriptRoot/env.ps1
 
@@ -38,6 +43,7 @@ function wget {
 }
 Set-Alias -Name top -Value btop
 Set-Alias -Name ls -Value Get-CustomFormatChildItem
+Set-Alias -Name ff -Value fastfetch
 
 # Modules
 
