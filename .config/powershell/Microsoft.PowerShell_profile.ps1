@@ -62,5 +62,11 @@ if (Assert-IsInteractiveShell) {
 	Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
 	Set-PSReadLineOption -BellStyle None
 	Set-PSReadLineOption -PredictionViewStyle ListView
-	carapace _carapace | Out-String | Invoke-Expression
+	if (Get-Command carapace -ErrorAction SilentlyContinue) {
+			carapace _carapace | Out-String | Invoke-Expression
+	}
+
+	if (Get-Command mise -ErrorAction SilentlyContinue) {
+		(&mise activate pwsh) | Out-String | Invoke-Expression
+	}
 }
