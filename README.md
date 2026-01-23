@@ -54,12 +54,13 @@ It is recommended to run the bootstrap script when prompted, or manually with `y
 
 ## Recommmended software
 
-For the prompt:
+For the shell and prompt:
 - zsh or pwsh (pwsh preferred)
 - [Oh My Posh](https://ohmyposh.dev/)
 - [vivid](https://github.com/sharkdp/vivid)
 - [carapace](https://github.com/carapace-sh/carapace-bin)
 - [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+- [mise](https://mise.jdx.dev)
 
 
 ## Yadm configuration
