@@ -46,6 +46,7 @@ Set-Alias -Name ls -Value Get-CustomFormatChildItem
 Set-Alias -Name ff -Value fastfetch
 Set-Alias -Name tf -Value tofu
 Set-Alias -Name ts -Value tailscale
+Set-Alias -Name tg -Value terragrunt
 
 # Modules
 
