@@ -8,5 +8,8 @@
     "workbench.colorTheme": "Victor's Dark Horizon",
     "editor.fontFamily": "'Hack Nerd Font'",
     "terminal.integrated.fontFamily": "'Hack Nerd Font'",
-    "workbench.editor.empty.hint": "hidden"
+    "workbench.editor.empty.hint": "hidden",
+    "claudeCode.preferredLocation": "panel",
+    "files.autoSaveDelay": 5000,
+    "mise.configureExtensionsAutomatically": true
 }
