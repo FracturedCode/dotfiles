@@ -1,7 +1,7 @@
 [user]
 	name = Jesse C
-	email = jesse@fracturedcode.net
-	signingkey = B2411D1DBCB4B39A120145146852139AB23C77B5
+	email = jess@jess.zip
+	signingkey = 750BBE00BC2E7356131F8D6F7D90478AD2F836A7
 [commit]
 	gpgsign = true
 [tag]
