@@ -1,10 +1,10 @@
 #!/usr/bin/env -S pwsh -NoProfile
 
 # XDG
-$Env:XDG_CONFIG_HOME="$HOME/.config"
-$Env:XDG_DATA_HOME="$HOME/.local/share"
-$Env:XDG_STATE_HOME="$HOME/.local/state"
-$Env:XDG_CACHE_HOME="$HOME/.cache"
+$Env:XDG_CONFIG_HOME = "$HOME/.config"
+$Env:XDG_DATA_HOME = "$HOME/.local/share"
+$Env:XDG_STATE_HOME = "$HOME/.local/state"
+$Env:XDG_CACHE_HOME = "$HOME/.cache"
 
 $XDG_CONFIG_HOME = $Env:XDG_CONFIG_HOME
 $XDG_DATA_HOME = $Env:XDG_DATA_HOME
@@ -15,8 +15,8 @@ $XDG_CACHE_HOME = $Env:XDG_CACHE_HOME
 $Env:PATH = "$HOME/.local/bin:" + $Env:PATH
 
 # Misc preferences
-$Env:LANG="en_US.UTF-8"
-$Env:EDITOR="nano"
+$Env:LANG = "en_US.UTF-8"
+$Env:EDITOR = "nano"
 $Env:VISUAL = "nano"
 $Env:LS_COLORS = (vivid generate molokai)
 $Env:BROWSER = "firefox"
@@ -44,6 +44,6 @@ Get-ChildItem -Hidden "$XDG_CONFIG_HOME/*/.env" | Foreach-Object {
 	Set-DotEnv -Path $_.FullName
 }
 
-if (Test-Path -Path "$CARGO_HOME/bin") {
-	$Env:PATH = "$CARGO_HOME/bin:" + $Env:PATH
+if (Test-Path -Path "$Env:CARGO_HOME/bin") {
+	$Env:PATH = "$Env:CARGO_HOME/bin:" + $Env:PATH
 }
