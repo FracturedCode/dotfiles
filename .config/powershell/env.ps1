@@ -43,3 +43,7 @@ function Set-DotEnv {
 Get-ChildItem -Hidden "$XDG_CONFIG_HOME/*/.env" | Foreach-Object {
 	Set-DotEnv -Path $_.FullName
 }
+
+if (Test-Path -Path "$CARGO_HOME/bin") {
+	$Env:PATH = "$CARGO_HOME/bin:" + $Env:PATH
+}
